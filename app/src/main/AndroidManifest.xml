@@ -41,7 +41,8 @@
             android:name=".Search"
             android:label="@string/title_activity_search" />
         <activity android:name=".Signal" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".introActivity"></activity>
     </application>
 
 </manifest>

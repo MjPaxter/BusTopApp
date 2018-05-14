@@ -15,8 +15,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         //DEFINIRE I PULSANTI COLLEGANDOLI ALLA GRAFICA -> log=(ImageView)findViewByID(R.id."nome nell'xml")
-
-
+        guest = (ImageView) findViewById(R.id.button_Guest);
+        log = (ImageView)  findViewById(R.id.button_Login);
 
         log.setOnClickListener(new View.OnClickListener() {
             @Override
