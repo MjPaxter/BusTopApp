@@ -89,7 +89,7 @@ public class Gps_Connection_Service extends Service {
                     k = 1;
                     Runthread();
                 }
-            }
+            }//
         }
         if(stop==0) {
             value = readfile(filename);
