@@ -17,8 +17,10 @@ public class Menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         //DEFINIRE I PULSANTI COLLEGANDOLI ALLA GRAFICA -> cerca=(ImageView)findViewByID(R.id."nome nell'xml"
-
-
+        cerca=(ImageView)findViewById(R.id.buttonCerca);
+        esci=(ImageView)findViewById(R.id.buttonExit);
+        impostazioni=(ImageView)findViewById(R.id.buttonImpostazioni);
+        indica=(ImageView)findViewById(R.id.buttonIndica);
 
         cerca.setOnClickListener(new View.OnClickListener() {
             @Override
