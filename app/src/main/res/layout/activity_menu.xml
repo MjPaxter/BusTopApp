@@ -23,15 +23,16 @@
         android:id="@+id/buttonCerca"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp"
         android:src="@drawable/ic_cerca"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toEndOf="@+id/buttonIndica"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.357" />
+        app:layout_constraintVertical_bias="0.357"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/buttonExit"
@@ -43,22 +44,24 @@
         app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+        app:layout_constraintVertical_bias="0.665"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/buttonImpostazioni"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="8dp"
         android:src="@drawable/ic_settings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.32"
         app:layout_constraintStart_toEndOf="@+id/buttonExit"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.673" />
+        app:layout_constraintVertical_bias="0.673"
+        tools:ignore="VectorDrawableCompat" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -70,5 +73,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.003"
-        android:src="@drawable/ic_logo_mini" />
+        android:src="@drawable/ic_logo_mini"
+        tools:ignore="VectorDrawableCompat" />
 </android.support.constraint.ConstraintLayout>
