@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_sfondo2"
-    tools:context="com.example.davideandrea.bustopapp.LoginOrCreate">
-
+    tools:context=".Register"
+    android:background="@drawable/ic_sfondo2_ot">
     <ImageView
         android:id="@+id/image_Logo"
         android:layout_width="wrap_content"
@@ -49,7 +48,22 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_Username"
-        app:layout_constraintVertical_bias="0.13"
+        app:layout_constraintVertical_bias="0.08"
+        tools:ignore="VectorDrawableCompat" />
+    <ImageView
+        android:id="@+id/image_Password2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:src="@drawable/ic_password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_Username"
+        app:layout_constraintVertical_bias="0.4"
         tools:ignore="VectorDrawableCompat" />
 
     <EditText
@@ -87,22 +101,24 @@
         app:layout_constraintStart_toStartOf="@+id/image_Password"
         app:layout_constraintEnd_toEndOf="@id/image_Password"
         app:layout_constraintBottom_toBottomOf="@+id/image_Password" />
-    <ImageView
-        android:id="@+id/button_Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="32dp"
-        android:clickable="true"
-        android:src="@drawable/ic_login"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:foreground="@drawable/button_effect_n1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_Password"
-        app:layout_constraintVertical_bias="0.13"
-        tools:ignore="VectorDrawableCompat" />
+    <EditText
+        android:id="@+id/text_Password2"
+        android:layout_width="@+id/image_Password2"
+        android:layout_height="@+id/image_Password2"
+        android:layout_margin="3dp"
+        android:background="@android:color/transparent"
+        android:textSize="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="40dp"
+        android:inputType="textPassword"
+        android:hint=" Ripeti Passowrd"
+        android:gravity="left|center_vertical"
+        android:textColor="@color/BluBase"
+        android:textCursorDrawable="@drawable/cursor"
+        app:layout_constraintTop_toTopOf="@+id/image_Password2"
+        app:layout_constraintStart_toStartOf="@+id/image_Password2"
+        app:layout_constraintEnd_toEndOf="@id/image_Password2"
+        app:layout_constraintBottom_toBottomOf="@+id/image_Password2" />
 
     <ImageView
         android:id="@+id/button_Registrati"
@@ -117,10 +133,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_Login"
-        app:layout_constraintVertical_bias="0.184"
+        app:layout_constraintTop_toBottomOf="@+id/image_Password2"
+        app:layout_constraintVertical_bias="0.2"
         tools:ignore="VectorDrawableCompat" />
-
     <ImageView
         android:id="@+id/button_Settings"
         android:layout_width="wrap_content"

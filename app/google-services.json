@@ -1,0 +1,81 @@
+{
+  "project_info": {
+    "project_number": "202742718018",
+    "firebase_url": "https://bustest-89915.firebaseio.com",
+    "project_id": "bustest-89915",
+    "storage_bucket": "bustest-89915.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202742718018:android:69bad8e36f809108",
+        "android_client_info": {
+          "package_name": "com.example.davide.bus_graphic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202742718018-illik4ki1n5sjv0cn5lng82euauu52qm.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "202742718018-illik4ki1n5sjv0cn5lng82euauu52qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZBPSV7lycVJOVH9wM-7knhpByL0uiFqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202742718018:android:cc0e79727fb8d633",
+        "android_client_info": {
+          "package_name": "com.example.davideandrea.bustopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202742718018-illik4ki1n5sjv0cn5lng82euauu52qm.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "202742718018-illik4ki1n5sjv0cn5lng82euauu52qm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZBPSV7lycVJOVH9wM-7knhpByL0uiFqk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

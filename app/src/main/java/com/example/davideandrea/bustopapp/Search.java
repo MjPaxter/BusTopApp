@@ -3,6 +3,7 @@ package com.example.davideandrea.bustopapp;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
         slider=(ImageView)findViewById(R.id.slider);
         slider.setOnTouchListener(new MotionGesture(Search.this){
             public void onSwipeLeft() {
+                slider.setVisibility(View.GONE);
                 ShowPopup();
             }
         });
@@ -94,6 +96,7 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         mydialog.dismiss();
+                        slider.setVisibility(View.VISIBLE);
                     }
                     @Override
                     public void onAnimationRepeat(Animation animation) {}
