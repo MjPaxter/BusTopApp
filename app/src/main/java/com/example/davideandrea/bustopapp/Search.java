@@ -1,6 +1,8 @@
 package com.example.davideandrea.bustopapp;
 
+import android.Manifest;
 import android.app.Dialog;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
@@ -29,6 +31,7 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
     Animation animTranslateClose;
     private GoogleMap mMap;
     private ImageView slider;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +41,10 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         mydialog = new Dialog(this, android.R.style.Theme_Light);
         mydialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        animTranslate= AnimationUtils.loadAnimation(this, R.anim.swipeleft);
-        animTranslateClose= AnimationUtils.loadAnimation(this, R.anim.swiperight);
-        slider=(ImageView)findViewById(R.id.slider);
-        slider.setOnTouchListener(new MotionGesture(Search.this){
+        animTranslate = AnimationUtils.loadAnimation(this, R.anim.swipeleft);
+        animTranslateClose = AnimationUtils.loadAnimation(this, R.anim.swiperight);
+        slider = (ImageView) findViewById(R.id.slider);
+        slider.setOnTouchListener(new MotionGesture(Search.this) {
             public void onSwipeLeft() {
                 slider.setVisibility(View.GONE);
                 ShowPopup();
@@ -58,13 +61,23 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
     }
 
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        mMap.setMyLocationEnabled(true);    //find my location (no battery-save mode)
     }
 
 
