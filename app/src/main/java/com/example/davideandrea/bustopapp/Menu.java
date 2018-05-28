@@ -7,15 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Menu extends AppCompatActivity {
     private ImageView cerca;
     private ImageView indica;
     private ImageView impostazioni;
     private ImageView esci;
+    private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        auth = FirebaseAuth.getInstance();
         //DEFINIRE I PULSANTI COLLEGANDOLI ALLA GRAFICA -> cerca=(ImageView)findViewByID(R.id."nome nell'xml"
         cerca=(ImageView)findViewById(R.id.buttonCerca);
         esci=(ImageView)findViewById(R.id.buttonExit);
@@ -39,6 +43,7 @@ public class Menu extends AppCompatActivity {
         esci.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                auth.signOut();
                 finish();
             }
         });

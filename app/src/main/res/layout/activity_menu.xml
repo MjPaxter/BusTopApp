@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_sfondo2_1"
+    android:background="@drawable/ic_sfondo2_ot"
     tools:context="com.example.davideandrea.bustopapp.Menu">
 
     <ImageView
@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_indica_button"
+        android:foreground="@drawable/button_effect_n2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
@@ -30,6 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toEndOf="@+id/buttonIndica"
+        android:foreground="@drawable/button_effect_n2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.357"
         tools:ignore="VectorDrawableCompat" />
@@ -39,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_exit"
+        android:foreground="@drawable/button_effect_n2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.181"
@@ -55,6 +58,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginLeft="8dp"
         android:src="@drawable/ic_settings"
+        android:foreground="@drawable/button_effect_n2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.32"
@@ -64,7 +68,7 @@
         tools:ignore="VectorDrawableCompat" />
 
     <ImageView
-        android:id="@+id/imageView10"
+        android:id="@+id/image_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -72,7 +76,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.003"
+        app:layout_constraintVertical_bias="0.002"
         android:src="@drawable/ic_logo_mini"
         tools:ignore="VectorDrawableCompat" />
+    <ImageView
+        android:id="@+id/button_Help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_help_black_24px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="RtlCompat,VectorDrawableCompat" />
 </android.support.constraint.ConstraintLayout>
