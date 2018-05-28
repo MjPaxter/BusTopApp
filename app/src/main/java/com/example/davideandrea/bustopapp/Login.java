@@ -7,16 +7,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.github.amlcurran.showcaseview.ShowcaseView;
+import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
+import com.github.amlcurran.showcaseview.targets.Target;
+import com.github.amlcurran.showcaseview.targets.ViewTarget;
 import com.google.firebase.auth.FirebaseAuth;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
+
 
 public class Login extends AppCompatActivity {
     private ImageView guest;
     private ImageView log;
     private FirebaseAuth auth;
+    private static final String SHOWCASE_ID = "1";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
             startActivity(new Intent(Login.this,Menu.class));
@@ -40,6 +53,21 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ShowcaseConfig config = new ShowcaseConfig();
+        config.setDelay(500); // half second between each showcase view
+
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+
+        sequence.setConfig(config);
+
+        sequence.addSequenceItem(guest,
+                "This is button one", "GOT IT");
+
+        sequence.addSequenceItem(log,
+                "This is button two", "GOT IT");
+
+        sequence.start();
 
 
 
