@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ public class Register extends AppCompatActivity {
     private EditText password1;
     private EditText password2;
     private FirebaseAuth auth;
+    private ProgressBar barra;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class Register extends AppCompatActivity {
         username = (EditText) findViewById(R.id.text_Username);
         password1 = (EditText) findViewById(R.id.text_Password);
         password2 = (EditText) findViewById(R.id.text_Password2);
+        barra = (ProgressBar) findViewById(R.id.progressBar);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,12 +60,14 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Le password non sono uguali", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                barra.setVisibility(View.VISIBLE);
                 auth.createUserWithEmailAndPassword(email, pass1)
                         .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
-                                    Toast.makeText(Register.this, "Registrazione fallita" + task.getException(),
+                                    barra.setVisibility(View.GONE);
+                                    Toast.makeText(Register.this, "Registrazione fallita  " + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
                                     startActivity(new Intent(Register.this, Menu.class));

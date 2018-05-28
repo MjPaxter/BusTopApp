@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ public class LoginOrCreate extends AppCompatActivity {
     private ImageView log;      //pulsante login
     private ImageView rec;      //pulsante registrazione
     private FirebaseAuth auth;
+    private ProgressBar barra;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class LoginOrCreate extends AppCompatActivity {
         rec = (ImageView) findViewById(R.id.button_Registrati);
         username = (EditText) findViewById(R.id.text_Username);
         password = (EditText) findViewById(R.id.text_Password);
+        barra = (ProgressBar) findViewById(R.id.progressBar);
         log.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,15 +51,17 @@ public class LoginOrCreate extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Inserisci la password", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                barra.setVisibility(View.VISIBLE);
                 auth.signInWithEmailAndPassword(email, pass)
                         .addOnCompleteListener(LoginOrCreate.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
+                                    barra.setVisibility(View.GONE);
                                     if (password.length() < 6) {
                                         password.setError("Password troppo corta");
                                     } else {
-                                        Toast.makeText(LoginOrCreate.this, "Autenticazione fallita", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginOrCreate.this, "Autenticazione fallita  ", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
                                     Intent intent = new Intent(LoginOrCreate.this, Menu.class);
