@@ -1,16 +1,14 @@
 package com.example.davideandrea.bustopapp;
 
 import android.content.Intent;
+import android.support.constraint.solver.widgets.Rectangle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
-import com.github.amlcurran.showcaseview.targets.Target;
-import com.github.amlcurran.showcaseview.targets.ViewTarget;
+
 import com.google.firebase.auth.FirebaseAuth;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
@@ -27,8 +25,6 @@ public class Login extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
@@ -55,22 +51,19 @@ public class Login extends AppCompatActivity {
         });
 
         ShowcaseConfig config = new ShowcaseConfig();
-        config.setDelay(500); // half second between each showcase view
+        config.setDelay(200); // 200 milliseconds between each showcase view
 
-        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);
+        MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(this);//, SHOWCASE_ID);
 
         sequence.setConfig(config);
 
         sequence.addSequenceItem(guest,
-                "This is button one", "GOT IT");
+                "Entra senza account", "CAPITO!");
 
         sequence.addSequenceItem(log,
-                "This is button two", "GOT IT");
+                "Crea o utilizza un account", "CAPITO!");
 
         sequence.start();
-
-
-
 
     }
 }

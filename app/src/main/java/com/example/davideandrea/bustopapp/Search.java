@@ -25,12 +25,25 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.net.Socket;
+
 public class Search extends FragmentActivity implements OnMapReadyCallback {
     Dialog mydialog;
+    Dialog dialogOptions;
     Animation animTranslate;
     Animation animTranslateClose;
+    Animation rotation;
+    Animation rotation2;
     private GoogleMap mMap;
     private ImageView slider;
+    private boolean runConnThread=false;
+    private Socket socket;
+    private String host="";
+    private int portnumber=1;
+    private boolean optionsShown=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +54,14 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
         mapFragment.getMapAsync(this);
         mydialog = new Dialog(this, android.R.style.Theme_Light);
         mydialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        animTranslate = AnimationUtils.loadAnimation(this, R.anim.swipeleft);
-        animTranslateClose = AnimationUtils.loadAnimation(this, R.anim.swiperight);
+
+        dialogOptions = new Dialog(this, android.R.style.Theme_Light);
+        dialogOptions.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        animTranslate = AnimationUtils.loadAnimation(this, R.anim.transition_to_left);
+        animTranslateClose = AnimationUtils.loadAnimation(this, R.anim.transition_to_right);
+        rotation= AnimationUtils.loadAnimation(this, R.anim.rotation);
+        rotation2=AnimationUtils.loadAnimation(this, R.anim.opposite_rotation);
         slider = (ImageView) findViewById(R.id.slider);
         slider.setOnTouchListener(new MotionGesture(Search.this) {
             public void onSwipeLeft() {
@@ -54,6 +73,14 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
             ColorDrawable dialogColor = new ColorDrawable(Color.BLACK);
             dialogColor.setAlpha(100); //(0-255) 0 means fully transparent, and 255 means fully opaque
             mydialog.getWindow().setBackgroundDrawable(dialogColor);
+            //mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        } catch (NullPointerException ex) {
+
+        }
+        try {
+            ColorDrawable dialogColor = new ColorDrawable(Color.BLACK);
+            dialogColor.setAlpha(100); //(0-255) 0 means fully transparent, and 255 means fully opaque
+            dialogOptions.getWindow().setBackgroundDrawable(dialogColor);
             //mydialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         } catch (NullPointerException ex) {
 
@@ -81,14 +108,12 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
     }
 
 
-
-
-
     private void ShowPopup() {
         EditText partenza;
         EditText arrivo;
         ImageView cerca;
         ImageView dialog;
+        final ImageView options;
         final LinearLayout d;
         mydialog.setContentView(R.layout.custompopup);
         cerca = (ImageView) mydialog.findViewById(R.id.buttoncerca);
@@ -116,7 +141,62 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
                 });
             }
         });
+        options=(ImageView)mydialog.findViewById(R.id.options);
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(optionsShown==false) {
+                    options.startAnimation(rotation);
+                    optionsShown=true;
+                    ShowPopup2();
+                }
+                else{
+                    optionsShown=false;
+                    options.startAnimation(rotation2);
+                }
+            }
+        });
         mydialog.show();
 
+    }
+    private void ShowPopup2() {
+        dialogOptions.setContentView(R.layout.options_popup);
+        dialogOptions.show();
+
+    }
+    //THREAD PER LA CONNESSIONE -> Background thread che non blocca la UI
+    private void Runthread() {
+        new Thread() {
+            @Override
+            public void run() {
+                while (runConnThread) {
+                            try {
+                                socket = new Socket(host, portnumber);
+                                while (!socket.isConnected()) {
+                                    socket = new Socket(host, portnumber);
+                                }
+                                BufferedWriter bw = null;
+                                try {
+                                    bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+                                    bw.write("rec");
+                                    bw.newLine();
+                                    bw.flush();
+
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    Thread.sleep(5000);
+                                    socket.close();
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
+                            } catch (
+                                    IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+            }
+        }.start();
     }
 }

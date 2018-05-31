@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popup"
     android:layout_width="350dp"
     android:layout_height="300dp"
     android:layout_gravity="center"
     android:background="@drawable/ic_rectangle_2"
-    android:orientation="vertical"
-    android:id="@+id/popup">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -78,13 +77,42 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/buttoncerca"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cerca1"
-            android:paddingTop="30dp"
-            android:layout_gravity="center_horizontal"
-            tools:ignore="VectorDrawableCompat" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/buttoncerca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="8dp"
+                android:paddingTop="30dp"
+                android:src="@drawable/ic_cerca1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageView
+                android:id="@+id/options"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/ic_list_search"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/buttoncerca"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:ignore="VectorDrawableCompat" />
+        </android.support.constraint.ConstraintLayout>
+
     </LinearLayout>
+
 </LinearLayout>

@@ -7,9 +7,9 @@
         android:repeatCount="0"
         />
     <scale
-        android:duration="1500"
-        android:fromXScale="0.0"
-        android:fromYScale="0.0"
+        android:duration="700"
+        android:fromXScale="0.1"
+        android:fromYScale="0.2"
         android:pivotX="100%"
         android:pivotY="50%"
         android:toXScale="1.0"
